@@ -1,26 +1,32 @@
 <?php
 
 $img_formats = "jpg,jpeg,gif,png,tiff,bmp"; // Only list image files
-$files = glob("./*.{".$img_formats."}", GLOB_BRACE);
+$img_formats = explode(",", $img_formats);
+$files = glob("./*");
+$image_files = array();
 foreach ($files as &$file) {
 	$file = basename($file);
 	$file = urlencode($file);
+	$extension = end(explode(".", $file));
+	if (in_array($extension, $img_formats)) { // Only include image files
+		$image_files[] = $file;
+	}
 }
 
 
 // Current - urlencode again because using $_GET decodes it
-$current = (isset($_GET["file"])) ? urlencode($_GET["file"]): $files[0];
+$current = (isset($_GET["file"])) ? urlencode($_GET["file"]): $image_files[0];
 
 // Previous
-$res = array_search($current, $files);
+$res = array_search($current, $image_files);
 if ($res) {
-	$previous = $files[$res - 1];
+	$previous = $image_files[$res - 1];
 	$previous = "?file=$previous";
 }
 
 // Next
-if ($res + 1 < count($files)) {
-	$next = $files[$res + 1];
+if ($res + 1 < count($image_files)) {
+	$next = $image_files[$res + 1];
 	$next = "?file=$next";
 }
 
