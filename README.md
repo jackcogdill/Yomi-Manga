@@ -12,6 +12,7 @@ Written from scratch by Yentup and licensed with [GPLv3](https://www.gnu.org/lic
 
 * Use the arrow keys to navigate
 * Can save and load your progress as a sort of "bookmark"
+ * Use 's' and 'l' to quickly save and load
 
 ## Usage
 > _Note: Made for *nix operating systems with [php](http://php.net/manual/en/install.php) installed. If you can run a localhost in php, it should work on windows._

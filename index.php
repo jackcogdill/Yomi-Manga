@@ -168,7 +168,29 @@ document.onkeydown = function (e) {
 	e  = e ? e : (event ? event : null);
 
 	switch (e.keyCode) {
-		case 37:
+		case 83: // s
+<?php
+
+if ($need_to_save) {
+	echo "leave();";
+	echo "window.location.href = \"$save\";";
+}
+
+?>
+			break;
+		case 76: // l
+<?php
+
+if (isset($load) && $load !== "?file=$current") {
+	if ($need_to_save) {
+		echo "leave();";
+	}
+	echo "window.location.href = \"$load\";";
+}
+
+?>
+			break;
+		case 37: // Left arrow
 <?php
 
 if (isset($previous)) {
@@ -180,7 +202,7 @@ if (isset($previous)) {
 
 ?>
 			break;
-		case 39:
+		case 39: // Right arrow
 <?php
 
 if (isset($next)) {
