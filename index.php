@@ -39,6 +39,7 @@ if (isset($_GET["save"])) {
 	fclose($fh);
 }
 
+$need_to_save = 1;
 if (file_exists("save.progress")) {
 	$contents = file_get_contents("save.progress");
 	$load = "?file=$contents";
@@ -101,7 +102,7 @@ body {
 
 <?php
 
-if (!isset($need_to_save) || $need_to_save) {
+if ($need_to_save) {
 	echo <<<m
 #save {
 	color: #0099CC;
@@ -143,7 +144,7 @@ m;
 <script type="text/javascript">
 
 <?php
-if (!isset($need_to_save) || $need_to_save) {
+if ($need_to_save) {
 echo <<<m
 
 function prompt(e) {
@@ -171,7 +172,7 @@ document.onkeydown = function (e) {
 <?php
 
 if (isset($previous)) {
-	if (!isset($need_to_save) || $need_to_save) {
+	if ($need_to_save) {
 		echo "leave();";
 	}
 	echo "window.location.href = \"$previous\";";
@@ -183,7 +184,7 @@ if (isset($previous)) {
 <?php
 
 if (isset($next)) {
-	if (!isset($need_to_save) || $need_to_save) {
+	if ($need_to_save) {
 		echo "leave();";
 	}
 	echo "window.location.href = \"$next\";";
@@ -206,7 +207,7 @@ if (isset($next)) {
 <div class="strip-headers">
 <div id="progress">
 <?php
-if (!isset($need_to_save) || $need_to_save) {
+if ($need_to_save) {
 	echo "<a href=\"$save\" id=\"save\" onclick=\"leave()\">Save</a> ";
 }
 else {
@@ -214,7 +215,7 @@ else {
 }
 
 if (isset($load)) {
-	if (!isset($need_to_save) || $need_to_save) {
+	if ($need_to_save) {
 		echo "<a href=\"$load\" onclick=\"leave()\">Load</a>";
 	}
 	else {
@@ -225,7 +226,7 @@ if (isset($load)) {
 </div>
 <?php
 if (isset($previous)) {
-	if (!isset($need_to_save) || $need_to_save) {
+	if ($need_to_save) {
 		echo "<a href=\"$previous\" onclick=\"leave()\">Previous</a> ";
 	}
 	else {
@@ -233,7 +234,7 @@ if (isset($previous)) {
 	}
 }
 if (isset($next)) {
-	if (!isset($need_to_save) || $need_to_save) {
+	if ($need_to_save) {
 		echo "<a href=\"$next\" onclick=\"leave()\">Next</a> ";
 	}
 	else {
