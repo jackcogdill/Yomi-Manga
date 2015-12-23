@@ -4,11 +4,12 @@ $img_formats = "jpg,jpeg,gif,png,tiff,bmp"; // Only list image files
 $files = glob("./*.{".$img_formats."}", GLOB_BRACE);
 foreach ($files as &$file) {
 	$file = basename($file);
+	$file = urlencode($file);
 }
 
 
-// Current
-$current = (isset($_GET["file"])) ? $_GET["file"]: $files[0];
+// Current - urlencode again because using $_GET decodes it
+$current = (isset($_GET["file"])) ? urlencode($_GET["file"]): $files[0];
 
 // Previous
 $res = array_search($current, $files);
