@@ -1,0 +1,5 @@
+#! /bin/bash
+
+cd "$(dirname "$0")"
+python -c "__import__('time').sleep(1.5);__import__('webbrowser').open_new_tab('http://localhost:1337')"
+php -S localhost:1337
