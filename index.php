@@ -6,7 +6,7 @@ $files = glob("./*");
 $image_files = array();
 foreach ($files as &$file) {
 	$file = basename($file);
-	$file = urlencode($file);
+	$file = rawurlencode($file);
 	$extension = end(explode(".", $file));
 	if (in_array($extension, $img_formats)) { // Only include image files
 		$image_files[] = $file;
@@ -14,8 +14,8 @@ foreach ($files as &$file) {
 }
 
 
-// Current - urlencode again because using $_GET decodes it
-$current = (isset($_GET["file"])) ? urlencode($_GET["file"]): $image_files[0];
+// Current - rawurlencode again because using $_GET decodes it
+$current = (isset($_GET["file"])) ? rawurlencode($_GET["file"]): $image_files[0];
 
 // Previous
 $res = array_search($current, $image_files);
