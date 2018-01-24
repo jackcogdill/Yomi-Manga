@@ -178,7 +178,7 @@ if ($need_to_save) {
 
 ?>
 			break;
-		case 76: // l
+		case 82: // r
 <?php
 
 if (isset($load) && $load !== "?file=$current") {
@@ -191,6 +191,7 @@ if (isset($load) && $load !== "?file=$current") {
 ?>
 			break;
 		case 37: // Left arrow
+		case 72: // h
 <?php
 
 if (isset($previous)) {
@@ -203,6 +204,7 @@ if (isset($previous)) {
 ?>
 			break;
 		case 39: // Right arrow
+		case 76: // l
 <?php
 
 if (isset($next)) {
