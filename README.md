@@ -6,7 +6,7 @@ Yomi Manga is for reading manga or any other comics offline in your browser.
 
 ## License and credits
 
-Written from scratch by Yentup and licensed with [GPLv3](https://www.gnu.org/licenses/gpl.html).
+Written from scratch and licensed with [GPLv3](https://www.gnu.org/licenses/gpl.html).
 
 ## Features
 
